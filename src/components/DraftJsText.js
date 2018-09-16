@@ -18,7 +18,6 @@ import LatexLabel from '../../../../MathBridge';
 const DraftJsText = (props: DraftJsTextPropsType): any => {
   let textElements = props.text;
 
-  var elements = [];
   if (textElements) {
     textElements = loadAttributes({
       text: props.text,
@@ -28,27 +27,18 @@ const DraftJsText = (props: DraftJsTextPropsType): any => {
       entityMap: props.entityMap,
       navigate: props.navigate,
       textProps: props.textProps,
-      type: props.type,
-      tex: props.tex,
+      type: props.type
     });
 
     const customStyle = props.customStyles ? props.customStyles[props.type] : undefined;
     const textAlignStyle = { textAlign: props.data['text-align'] };
-
-  
-    if (textElements.tex) {
-      return (
-        <LatexLabel formula={textElements.text}></LatexLabel>
-      )
-    }
-
 
     return (
       <View
       >{
         textElements.map(item => {
           // console.log("Item", item);
-            if (item.props.type == "latex"){
+            if (item && item.props && item.props.type == "latex"){
               return <LatexLabel formula={item.props.text}></LatexLabel>
             }
 
