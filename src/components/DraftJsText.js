@@ -7,16 +7,18 @@
 // @flow
 
 import React from 'react';
-import { Text } from 'react-native';
+import { Text , View} from 'react-native';
 
 import loadAttributes from '../loadAttributes';
 
 import defaultStyles from './defaultStyles';
 import type { DraftJsTextPropsType } from './types';
+import LatexLabel from '../../../../MathBridge';
 
 const DraftJsText = (props: DraftJsTextPropsType): any => {
   let textElements = props.text;
 
+  var elements = [];
   if (textElements) {
     textElements = loadAttributes({
       text: props.text,
@@ -27,17 +29,34 @@ const DraftJsText = (props: DraftJsTextPropsType): any => {
       navigate: props.navigate,
       textProps: props.textProps,
       type: props.type,
+      tex: props.tex,
     });
 
     const customStyle = props.customStyles ? props.customStyles[props.type] : undefined;
     const textAlignStyle = { textAlign: props.data['text-align'] };
 
+  
+    if (textElements.tex) {
+      return (
+        <LatexLabel formula={textElements.text}></LatexLabel>
+      )
+    }
+
+
     return (
-      <Text
-        style={[defaultStyles[props.type], textAlignStyle, customStyle]}
-        {...props.textProps}
-      >{textElements}
-      </Text>
+      <View
+      >{
+        textElements.map(item => {
+          // console.log("Item", item);
+            if (item.props.type == "latex"){
+              return <LatexLabel formula={item.props.text}></LatexLabel>
+            }
+
+            return <Text  style={[defaultStyles[props.type], textAlignStyle, customStyle]}
+            {...props.textProps}>{item}</Text>
+        })
+      }
+      </View>
     );
   }
   return null;
