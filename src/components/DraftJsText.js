@@ -34,16 +34,26 @@ const DraftJsText = (props: DraftJsTextPropsType): any => {
     const textAlignStyle = { textAlign: props.data['text-align'] };
 
     return (
-      <View
-      >{
+      <View style={{ flexDirection:"row", flexWrap: "wrap", alignItems: "center"}}>{
         textElements.map(item => {
           // console.log("Item", item);
             if (item && item.props && item.props.type == "latex"){
-              return <LatexLabel formula={item.props.text}></LatexLabel>
+              return <LatexLabel  formula={item.props.text}></LatexLabel>
             }
 
-            return <Text  style={[defaultStyles[props.type], textAlignStyle, customStyle]}
-            {...props.textProps}>{item}</Text>
+
+            if (!item || !item.props || !item.props.children)return null;
+
+            var splitted = item.props.children.split(" ");
+            console.log("Splitted", splitted);
+             var res = splitted.map(text =>  {
+              return <Text style={[defaultStyles[props.type], textAlignStyle, customStyle]}
+              {...props.textProps}>{text + " " }</Text>
+            });
+
+            return res;
+            
+           
         })
       }
       </View>
