@@ -5,7 +5,6 @@
  */
 
 // @flow
-
 import React from 'react';
 import { Text , View} from 'react-native';
 
@@ -37,15 +36,25 @@ const DraftJsText = (props: DraftJsTextPropsType): any => {
       <View style={{ flexDirection:"row", flexWrap: "wrap", alignItems: "center"}}>{
         textElements.map(item => {
           // console.log("Item", item);
+           console.log("Item DraftJsText", item);
+
             if (item && item.props && item.props.type == "latex"){
               return <LatexLabel  formula={item.props.text}></LatexLabel>
             }
 
+            if (item.length > 0) {
+              return <Text style={[defaultStyles[props.type], textAlignStyle, customStyle]}>{item + " " }</Text>
+            }
 
-            if (!item || !item.props || !item.props.children)return null;
+
+            if (!item || !item.props || !item.props.children)
+            {
+              console.log("Return null")
+              return null;
+            }
 
             var splitted = item.props.children.split(" ");
-            console.log("Splitted", splitted);
+            // console.log("Splitted", splitted);
              var res = splitted.map(text =>  {
               return <Text style={[defaultStyles[props.type], textAlignStyle, customStyle]}
               {...props.textProps}>{text + " " }</Text>
