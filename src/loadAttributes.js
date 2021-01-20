@@ -133,7 +133,7 @@ const loadAttributes = (params : ParamsType) : any => {
       if (inlineFormula !== undefined) {
         // itemData.text= substring(inlineFormula, item.offset, item.offset +
         // item.length);
-        itemData.text = inlineFormula + "ciaoo";
+        itemData.text = inlineFormula;
         itemData.tex = true;
         itemData.type = "latex";
       }
