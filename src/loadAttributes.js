@@ -23,11 +23,11 @@ export const getItemOnPress = (item : Object, entityMap :
   ? Object, navigate : Function) => {
   if (item.key !== undefined && entityMap && !isEmptyObject(entityMap)) {
     // $$FlowFixMe entityMap is valid here
-    if (entityMap[item.key].data.url) 
+    if (entityMap[item.key].data.url)
       return () => {
         navigate(entityMap[item.key].data.url);
       };
-    
+
     return null;
   }
   return undefined;
@@ -126,15 +126,15 @@ const loadAttributes = (params : ParamsType) : any => {
 
 
       const itemOnPress = getItemOnPress(item, entityMap, navigateFunction);
-      if (itemOnPress !== undefined) 
+      if (itemOnPress !== undefined)
         Object.assign(itemData, {onPress: itemOnPress});
-      
+
       // Latex
       const inlineFormula = getInlineFormula(item, entityMap);
       if (inlineFormula !== undefined) {
         // itemData.text= substring(inlineFormula, item.offset, item.offset +
         // item.length);
-        itemData.text = inlineFormula;
+        itemData.text = inlineFormula + "ciaoo";
         itemData.tex = true;
         itemData.type = "latex";
       }
