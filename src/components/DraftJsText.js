@@ -12,7 +12,7 @@ import loadAttributes from '../loadAttributes';
 
 import defaultStyles from './defaultStyles';
 import type { DraftJsTextPropsType } from './types';
-import LatexLabel from '../../../../MathBridge';
+import {MathText} from 'react-native-math-view';
 
 const DraftJsText = (props: DraftJsTextPropsType): any => {
   let textElements = props.text;
@@ -39,7 +39,7 @@ const DraftJsText = (props: DraftJsTextPropsType): any => {
            console.log("Item DraftJsText", item);
 
             if (item && item.props && item.props.type == "latex"){
-              return <LatexLabel  formula={item.props.text}></LatexLabel>
+              return <MathText  math={item.props.text}></MathText>
             }
 
             if (item.length > 0) {
@@ -61,8 +61,8 @@ const DraftJsText = (props: DraftJsTextPropsType): any => {
             });
 
             return res;
-            
-           
+
+
         })
       }
       </View>

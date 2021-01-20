@@ -16,7 +16,6 @@ import generateKey from './utils/generateKey';
 import flatAttributesList from './flatAttributesList';
 import getItemType from './helpers/getItemType';
 import isEmptyObject from './helpers/isEmptyObject';
-import LatexLabel from '../../../MathBridge';
 
 
 export const getItemOnPress = (item : Object, entityMap :
