@@ -36,7 +36,6 @@ const DraftJsText = (props: DraftJsTextPropsType): any => {
       <View style={{ flexDirection:"row", flexWrap: "wrap", alignItems: "center"}}>{
         textElements.map(item => {
           // console.log("Item", item);
-           console.log("Item DraftJsText", item);
 
             if (item && item.props && item.props.type == "latex"){
               return <MathText   color={"#c1d5e0"}  math={item.props.text}></MathText>
