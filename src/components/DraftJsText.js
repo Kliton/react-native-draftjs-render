@@ -39,7 +39,7 @@ const DraftJsText = (props: DraftJsTextPropsType): any => {
            console.log("Item DraftJsText", item);
 
             if (item && item.props && item.props.type == "latex"){
-              return <MathText  color="#964ff0"  math={item.props.text}></MathText>
+              return <MathText   color={"#c1d5e0"}  math={item.props.text}></MathText>
             }
 
             if (item.length > 0) {
