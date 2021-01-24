@@ -12,7 +12,7 @@ import loadAttributes from '../loadAttributes';
 
 import defaultStyles from './defaultStyles';
 import type { DraftJsTextPropsType } from './types';
-import {MathText} from 'react-native-math-view';
+import MathText from 'react-native-math-view';
 
 const DraftJsText = (props: DraftJsTextPropsType): any => {
   let textElements = props.text;
